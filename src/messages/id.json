@@ -1,0 +1,49 @@
+{
+  "nav": {
+    "works": "Karya",
+    "experience": "Pengalaman",
+    "animation": "Animasi",
+    "bored": "Bosan?",
+    "medium": "Medium",
+    "reachOut": "Hubungi Saya"
+  },
+  "hero": {
+    "domain": "dimasadimo.com",
+    "roles": [
+      "/Pengembang React Frontend",
+      "/Desainer UI & UX",
+      "/Design Engineer"
+    ],
+    "location": "Berbasis di Jakarta, Indonesia",
+    "availability": "Hubungi untuk ketersediaan",
+    "name": "DIMAS ADIMO"
+  },
+  "experience": {
+    "title": "Pengalaman",
+    "shortBio": "Frontend Engineer · Design Engineer. Membangun pengalaman web yang aksesibel dan presisi.",
+    "links": {
+      "about": "Tentang",
+      "experience": "Pengalaman",
+      "projects": "Proyek"
+    }
+  },
+  "projects": {
+    "title": "Karya Terbaru",
+    "filters": {
+      "all": "Semua",
+      "react": "React",
+      "fullstack": "Fullstack",
+      "uiux": "UI/UX"
+    }
+  },
+  "animation": {
+    "text": "Gerak adalah medium saya"
+  },
+  "game": {
+    "title": "Bosan?",
+    "snake": "Ular",
+    "tetris": "Tetris",
+    "breakout": "Breakout",
+    "score": "Skor"
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "nav": {
+    "works": "Works",
+    "experience": "Experience",
+    "animation": "Animation",
+    "bored": "Bored?",
+    "medium": "Medium",
+    "reachOut": "Reach Out"
+  },
+  "hero": {
+    "domain": "dimasadimo.com",
+    "roles": [
+      "/Frontend React Dev",
+      "/UI & UX Designer",
+      "/Design Engineer"
+    ],
+    "location": "Based in Jakarta, Indonesia",
+    "availability": "Get in touch for availability",
+    "name": "DIMAS ADIMO"
+  },
+  "experience": {
+    "title": "Experience",
+    "shortBio": "Frontend Engineer · Design Engineer. Building accessible, pixel-perfect experiences for the web.",
+    "links": {
+      "about": "About",
+      "experience": "Experience",
+      "projects": "Projects"
+    }
+  },
+  "projects": {
+    "title": "Recent Works",
+    "filters": {
+      "all": "All",
+      "react": "React",
+      "fullstack": "Fullstack",
+      "uiux": "UI/UX"
+    }
+  },
+  "animation": {
+    "text": "Motion is my medium"
+  },
+  "game": {
+    "title": "Bored?",
+    "snake": "Snake",
+    "tetris": "Tetris",
+    "breakout": "Breakout",
+    "score": "Score"
+  }
+}
