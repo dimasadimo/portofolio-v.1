@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'motion/react';
-import { useIntl } from 'react-intl';
+import { useIntl, FormattedMessage } from 'react-intl';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowUpRight, Linkedin, Instagram, Github, File } from 'lucide-react';
@@ -10,26 +10,26 @@ gsap.registerPlugin(ScrollTrigger);
 
 const experiences = [
   {
-    date: "2025 — PRESENT",
+    dateKey: "exp.codeidFront.date",
     company: "Code ID",
-    role: "Frontend Web Engineer",
-    description: "Leading to maintain a multi-platform UI framework. Bridging the gap between brand design and complex frontend implementations.",
+    roleKey: "exp.codeidFront.role",
+    descKey: "exp.codeidFront.desc",
     tech: ["React", "TypeScript", "Framer Motion", "TanStack", "Tailwind"],
     link: "https://www.code.id/"
   },
   {
-    date: "2024 — 2025",
+    dateKey: "exp.codeidSpecialist.date",
     company: "Code ID",
-    role: "Product Specialist Consultant",
-    description: "An integrated position involving project management, UI/UX design, business analysis, and manual QA testing to ensure the delivery of a robust, user-centered application.",
+    roleKey: "exp.codeidSpecialist.role",
+    descKey: "exp.codeidSpecialist.desc",
     tech: ["Project Management", "SQL Server", "PostgreSQL", "SSIS", "Azure DevOps"],
     link: "https://www.code.id/"
   },
   {
-    date: "2021 — 2023",
+    dateKey: "exp.bafFront.date",
     company: "Bussan Auto Finance",
-    role: "Frontend Engineer",
-    description: "Responsible for developing functional code, website maintenance and enhancements for internal web based sales order management system. Application used by sales to input order data and monitor order status.",
+    roleKey: "exp.bafFront.role",
+    descKey: "exp.bafFront.desc",
     tech: ["React.js", "SASS", "Redux", "ReduxForm", "Bootstrap"],
     link: "https://www.baf.id/en"
   },
@@ -69,32 +69,32 @@ const libraryItems: LibraryItem[] = [
 
 const projects = [
   {
-    title: "EcoSphere Dashboard",
-    description: "A real-time environmental monitoring dashboard with complex data visualizations.",
+    titleKey: "proj.ecosphere.title",
+    descKey: "proj.ecosphere.desc",
     tags: ["React", "D3.js", "Firebase"],
     link: "#"
   },
   {
-    title: "Nexus Marketplace",
-    description: "Multi-vendor e-commerce platform with automated logistics and payment integrations.",
+    titleKey: "proj.nexus.title",
+    descKey: "proj.nexus.desc",
     tags: ["Next.js", "PostgreSQL", "Stripe"],
     link: "#"
   },
   {
-    title: "Voyager UI Kit",
-    description: "A comprehensive design system and component library focused on high-density data applications.",
+    titleKey: "proj.voyager.title",
+    descKey: "proj.voyager.desc",
     tags: ["Figma", "React", "Storybook"],
     link: "#"
   }
 ];
 
 const SECTIONS = [
-  { id: "introduction", label: "Introduction" },
-  { id: "experience", label: "Experience" },
-  { id: "project", label: "Project" },
-  { id: "works", label: "Works", disabled: true  },
-  { id: "article", label: "Article", disabled: true },
-  { id: "bored", label: "Bored?", disabled: true }
+  { id: "introduction" },
+  { id: "experience" },
+  { id: "project" },
+  { id: "works", disabled: true  },
+  { id: "article", disabled: true },
+  { id: "bored", disabled: true }
 ];
 
 export const Experience: React.FC = () => {
@@ -175,7 +175,9 @@ export const Experience: React.FC = () => {
         <div className="md:h-[calc(100vh-200px)] md:sticky md:top-28 flex flex-col justify-between py-4">
           <div className="space-y-6">
             <div className="space-y-4">
-              <h2 className="text-2xl font-display font-bold">Fullstack Engineer · Design Engineer</h2>
+              <h2 className="text-2xl font-display font-bold">
+                {intl.formatMessage({ id: 'intro.headline' })}
+              </h2>
               <p className="text-[var(--text-muted)] max-w-xs leading-relaxed">
                 {intl.formatMessage({ id: 'experience.shortBio' })}
               </p>
@@ -184,6 +186,7 @@ export const Experience: React.FC = () => {
             <nav className="hidden md:flex flex-col gap-4 py-12">
               {SECTIONS.map((sec) => {
                 const isActive = activeSection === sec.id;
+                const label = intl.formatMessage({ id: `sections.${sec.id}` });
                 
                 if (sec.disabled) {
                   return (
@@ -194,7 +197,7 @@ export const Experience: React.FC = () => {
                       <span className="w-8 h-px !bg-[var(--text-muted)]" />
                       <div className="flex items-center gap-2">
                         <span className="line-through !text-[var(--text-muted)]">
-                          {sec.label}
+                          {label}
                         </span>
                         <span className="text-[8px] tracking-widest px-1 py-0.5 rounded border border-orange/30 !text-orange font-bold uppercase bg-orange/5 leading-none">
                           Soon
@@ -219,7 +222,7 @@ export const Experience: React.FC = () => {
                       "transition-colors duration-300",
                       isActive ? "!text-orange" : "!text-[var(--text-muted)] group-hover:!text-orange"
                     )}>
-                      {sec.label}
+                      {label}
                     </span>
                   </a>
                 );
@@ -228,9 +231,9 @@ export const Experience: React.FC = () => {
           </div>
 
           <div className="flex gap-6 text-[var(--text-muted)] ">
-            <a href="#" className="hover:text-orange transition-colors"><Linkedin size={20} /></a>
-            <a href="#" className="hover:text-orange transition-colors"><Instagram size={20} /></a>
-            <a href="#" className="hover:text-orange transition-colors"><Github size={20} /></a>
+            <a href="https://id.linkedin.com/in/dimasadihartomo" target="_blank" rel="noopener noreferrer" className="hover:text-orange transition-colors"><Linkedin size={20} /></a>
+            <a href="https://www.instagram.com/dimsaadimo/" target="_blank" rel="noopener noreferrer" className="hover:text-orange transition-colors"><Instagram size={20} /></a>
+            <a href="https://github.com/dimasadimo/" target="_blank" rel="noopener noreferrer" className="hover:text-orange transition-colors"><Github size={20} /></a>
           </div>
         </div>
 
@@ -238,20 +241,44 @@ export const Experience: React.FC = () => {
         <div className="space-y-24 mt-10 mb-18">
           {/* Section 1: Introduction */}
           <section id="introduction" className="space-y-6 scroll-mt-28">
-            <h1 className="text-[15px] font-medium text-zinc-900">Dimas Adimo</h1>
+            <h1 className="text-[15px] font-medium text-[var(--text-primary)]">Dimas Adimo</h1>
             <div className="space-y-4 text-[15px] leading-relaxed max-w-xl">
               <p className="text-[var(--text-muted)]">
-                I’m a design engineer based in <span className="text-zinc-900 underline underline-offset-4 cursor-pointer"> Jakarta, Indonesia</span>.
+                <FormattedMessage
+                  id="intro.p1"
+                  values={{
+                    location: (
+                      <span className="text-[var(--text-primary)] underline underline-offset-4 cursor-pointer">
+                        {intl.formatMessage({ id: 'intro.p1Location' })}
+                      </span>
+                    )
+                  }}
+                />
               </p>
               <p className="text-[var(--text-muted)]">
-                I enjoy exploring new ways to express myself without limitations, drawn to the details that most people never notice but always feel
-                ── Bridging the gap between user-centered design & technical problem solving through applications, interfaces & interactions
+                {intl.formatMessage({ id: 'intro.p2' })}
               </p>
               <p className="text-[var(--text-muted)]">
-                I’ve been fortunate to work with teams at 
-                <span className="text-zinc-900 underline underline-offset-4 cursor-pointer"> Bussan Auto Finance</span>, 
-                <span className="text-zinc-900 underline underline-offset-4 cursor-pointer"> Deloitte</span>, and 
-                <span className="text-zinc-900 underline underline-offset-4 cursor-pointer"> Code.ID</span> & others.
+                <FormattedMessage
+                  id="intro.p3"
+                  values={{
+                    baf: (
+                      <span className="text-[var(--text-primary)] underline underline-offset-4 cursor-pointer">
+                        {intl.formatMessage({ id: 'intro.baf' })}
+                      </span>
+                    ),
+                    deloitte: (
+                      <span className="text-[var(--text-primary)] underline underline-offset-4 cursor-pointer">
+                        {intl.formatMessage({ id: 'intro.deloitte' })}
+                      </span>
+                    ),
+                    codeid: (
+                      <span className="text-[var(--text-primary)] underline underline-offset-4 cursor-pointer">
+                        {intl.formatMessage({ id: 'intro.codeid' })}
+                      </span>
+                    )
+                  }}
+                />
               </p>
             </div>
           </section>
@@ -263,7 +290,7 @@ export const Experience: React.FC = () => {
                 href="#experience"
                 className="inline-block -mx-2 rounded px-2 py-1 transition-colors duration-200 hover:bg-zinc-400/50 cursor-pointer"
               >
-                Experience 5+years
+                {intl.formatMessage({ id: 'exp.years' })}
               </a>
             </h2>
             <div className="space-y-6">
@@ -273,7 +300,9 @@ export const Experience: React.FC = () => {
                   className="exp-card group relative p-6 rounded-xl hover:bg-orange/5 transition-colors border border-transparent hover:border-orange/10 cursor-default"
                 >
                   <div className="grid grid-cols-1 lg:grid-cols-[25%_75%] gap-4">
-                    <span className="text-xs font-bold text-[var(--text-muted)] py-1">{exp.date}</span>
+                    <span className="text-xs font-bold text-[var(--text-muted)] py-1">
+                      {intl.formatMessage({ id: exp.dateKey })}
+                    </span>
                     <div className="space-y-3">
                       <a 
                         href={exp.link} 
@@ -282,7 +311,7 @@ export const Experience: React.FC = () => {
                         className="group/link inline-block"
                       >
                         <h3 className="text-xl font-bold flex items-center gap-2 group-hover:text-orange transition-colors">
-                          {exp.role} · {exp.company}
+                          {intl.formatMessage({ id: exp.roleKey })} · {exp.company}
                           <ArrowUpRight 
                             size={16} 
                             className="opacity-0 group-hover:opacity-100 transition-all translate-x-[-10px] group-hover:translate-x-0" 
@@ -290,13 +319,13 @@ export const Experience: React.FC = () => {
                         </h3>
                       </a>
                       <p className="text-[var(--text-muted)] leading-relaxed">
-                        {exp.description}
+                        {intl.formatMessage({ id: exp.descKey })}
                       </p>
                       <div className="flex flex-wrap gap-2 pt-2">
                         {exp.tech.map((t, i) => (
                           <span 
                             key={i} 
-                            className="px-3 py-1 rounded-full border border-orange/20 text-[10px] font-bold text-orange uppercase tracking-wider !bg-gray-300"
+                            className="px-3 py-1 rounded-full border border-orange/20 text-[10px] font-bold text-orange uppercase tracking-wider bg-orange/5 dark:bg-orange/10"
                           >
                             {t}
                           </span>
@@ -314,7 +343,7 @@ export const Experience: React.FC = () => {
               >
                 <h3 className="text-sm flex items-center gap-2 group-hover/link:text-orange transition-colors">
                   <File size={16} />
-                  View Full Resume
+                  {intl.formatMessage({ id: 'exp.resume' })}
                   <ArrowUpRight 
                     size={16} 
                     className="opacity-0 group-hover/link:opacity-100 transition-all translate-x-[-4px] group-hover/link:translate-x-0" 
@@ -328,10 +357,10 @@ export const Experience: React.FC = () => {
           <section id="project" className="space-y-6 scroll-mt-28">
             <h2 className="border-b border-gray-400 pb-2 text-[13px] font-medium text-zinc-400 uppercase tracking-widest">
               <a 
-                href="#experience"
+                href="#project"
                 className="inline-block -mx-2 rounded px-2 py-1 transition-colors duration-200 hover:bg-zinc-400/50 cursor-pointer"
               >
-                Projects 5+
+                {intl.formatMessage({ id: 'proj.title' })}
               </a>
             </h2>
             <div className="grid grid-cols-1 gap-4">
@@ -339,20 +368,22 @@ export const Experience: React.FC = () => {
                 <a 
                   key={idx} 
                   href={proj.link}
-                  className="group block p-6 rounded-xl border border-zinc-100 hover:border-orange/20 hover:bg-orange/5 transition-all duration-300"
+                  className="group block p-6 rounded-xl border border-[var(--border-color)] hover:border-orange/20 hover:bg-orange/5 transition-all duration-300"
                 >
                   <div className="flex items-center justify-between mb-2">
-                    <h3 className="text-[16px] font-semibold text-zinc-800 group-hover:text-orange transition-colors flex items-center gap-1.5">
-                      {proj.title}
+                    <h3 className="text-[16px] font-semibold text-[var(--text-primary)] group-hover:text-orange transition-colors flex items-center gap-1.5">
+                      {intl.formatMessage({ id: proj.titleKey })}
                       <ArrowUpRight size={14} className="opacity-0 -translate-y-0.5 translate-x-0.5 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 transition-all duration-300" />
                     </h3>
                   </div>
-                  <p className="text-[14px] text-zinc-500 leading-relaxed mb-4">{proj.description}</p>
+                  <p className="text-[14px] text-[var(--text-muted)] leading-relaxed mb-4">
+                    {intl.formatMessage({ id: proj.descKey })}
+                  </p>
                   <div className="flex flex-wrap gap-2">
                     {proj.tags.map((t, i) => (
                       <span 
                         key={i} 
-                        className="px-2.5 py-0.5 rounded-full border border-orange/15 text-[9px] font-bold text-orange uppercase tracking-wider !bg-gray-300"
+                        className="px-2.5 py-0.5 rounded-full border border-orange/15 text-[9px] font-bold text-orange uppercase tracking-wider bg-orange/5 dark:bg-orange/10"
                       >
                         {t}
                       </span>

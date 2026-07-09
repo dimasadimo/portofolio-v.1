@@ -8,6 +8,18 @@ export const Navbar: React.FC = () => {
   const { theme, setTheme } = useTheme();
   const { locale, setLocale } = useLanguage();
 
+  const toggleTheme = () => {
+    const nextTheme = theme === 'dark' ? 'light' : 'dark';
+    if (!(document as any).startViewTransition) {
+      setTheme(nextTheme);
+      return;
+    }
+    (document as any).startViewTransition(() => {
+      document.documentElement.setAttribute('data-theme', nextTheme);
+      setTheme(nextTheme);
+    });
+  };
+
   return (
     <motion.nav 
       initial={{ y: -100 }}
@@ -19,7 +31,7 @@ export const Navbar: React.FC = () => {
         className="absolute inset-0 -z-10 h-48 w-full bg-gradient-to-b from-[var(--bg-primary)] via-[var(--bg-primary)]/80 to-transparent backdrop-blur-2xl [mask-image:linear-gradient(to_bottom,black_20%,black_40%,transparent_90%)]" 
       />
       {/* Language Toggle */}
-      <div className="flex-1 hidden md:flex items-center">
+      <div className="flex-1 flex items-center">
         <button 
           onClick={() => setLocale(locale === 'en' ? 'id' : 'en')}
           className="flex items-center gap-2 text-[12px] font-bold uppercase tracking-widest text-[var(--text-muted)] hover:text-orange transition-colors"
@@ -37,7 +49,7 @@ export const Navbar: React.FC = () => {
       {/* Theme Toggle */}
       <div className="flex-1 flex justify-end">
         <button 
-          onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+          onClick={toggleTheme}
           className="p-2 rounded-full hover:bg-orange/10 text-[var(--text-muted)] hover:text-orange transition-all"
         >
           {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}

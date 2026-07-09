@@ -16,9 +16,14 @@ export const Footer: React.FC = () => {
                     </p>
 
                     <div className="flex gap-8">
-                        {['LinkedIn', 'Instagram', 'Github', 'Behance'].map(s => (
-                            <a key={s} href="#" className="text-[var(--text-muted)] hover:text-orange text-[10px] font-bold uppercase tracking-widest transition-colors">
-                                {s}
+                        {[
+                            { label: 'LinkedIn', url: 'https://id.linkedin.com/in/dimasadihartomo' },
+                            { label: 'Instagram', url: 'https://www.instagram.com/dimsaadimo/' },
+                            { label: 'Github', url: 'https://github.com/dimasadimo/' },
+                            { label: 'Behance', url: '#' }
+                        ].map(s => (
+                            <a key={s.label} href={s.url} target={s.url !== '#' ? "_blank" : undefined} rel={s.url !== '#' ? "noopener noreferrer" : undefined} className="text-[var(--text-muted)] hover:text-orange text-[10px] font-bold uppercase tracking-widest transition-colors">
+                                {s.label}
                             </a>
                         ))}
                     </div>

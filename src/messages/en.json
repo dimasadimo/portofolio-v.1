@@ -45,5 +45,57 @@
     "tetris": "Tetris",
     "breakout": "Breakout",
     "score": "Score"
+  },
+  "sections": {
+    "introduction": "Introduction",
+    "experience": "Experience",
+    "project": "Project",
+    "works": "Works",
+    "article": "Article",
+    "bored": "Bored?"
+  },
+  "intro": {
+    "headline": "Fullstack Engineer · Design Engineer",
+    "p1": "I’m a design engineer based in {location}.",
+    "p1Location": "Jakarta, Indonesia",
+    "p2": "I enjoy exploring new ways to express myself without limitations, drawn to the details that most people never notice but always feel ── Bridging the gap between user-centered design & technical problem solving through applications, interfaces & interactions",
+    "p3": "I’ve been fortunate to work with teams at {baf}, {deloitte}, and {codeid} & others.",
+    "baf": "Bussan Auto Finance",
+    "deloitte": "Deloitte",
+    "codeid": "Code.ID"
+  },
+  "exp": {
+    "years": "Experience 5+years",
+    "codeidFront": {
+      "date": "2025 — PRESENT",
+      "role": "Frontend Web Engineer",
+      "desc": "Leading to maintain a multi-platform UI framework. Bridging the gap between brand design and complex frontend implementations."
+    },
+    "codeidSpecialist": {
+      "date": "2024 — 2025",
+      "role": "Product Specialist Consultant",
+      "desc": "An integrated position involving project management, UI/UX design, business analysis, and manual QA testing to ensure the delivery of a robust, user-centered application."
+    },
+    "bafFront": {
+      "date": "2021 — 2023",
+      "role": "Frontend Engineer",
+      "desc": "Responsible for developing functional code, website maintenance and enhancements for internal web based sales order management system. Application used by sales to input order data and monitor order status."
+    },
+    "resume": "View Full Resume"
+  },
+  "proj": {
+    "title": "Projects 5+",
+    "ecosphere": {
+      "title": "EcoSphere Dashboard",
+      "desc": "A real-time environmental monitoring dashboard with complex data visualizations."
+    },
+    "nexus": {
+      "title": "Nexus Marketplace",
+      "desc": "Multi-vendor e-commerce platform with automated logistics and payment integrations."
+    },
+    "voyager": {
+      "title": "Voyager UI Kit",
+      "desc": "A comprehensive design system and component library focused on high-density data applications."
+    }
   }
 }

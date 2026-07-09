@@ -101,7 +101,7 @@ export const AnimationShowcase: React.FC = () => {
   }, []);
 
   return (
-    <section id="animation" className="relative h-screen w-full bg-[#0C1B3F] overflow-hidden">
+    <section id="animation" className="relative h-screen w-full bg-[var(--bg-primary)] overflow-hidden">
       <Suspense fallback={<div className="w-full h-full bg-gradient-to-br from-orange/20 to-purple/20 animate-pulse" />}>
         <Canvas camera={{ position: [0, 0, 5], fov: 75 }}>
           <ambientLight intensity={0.5} />
@@ -112,15 +112,15 @@ export const AnimationShowcase: React.FC = () => {
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none px-4">
         <h2 
           ref={textRef}
-          className="text-6xl md:text-8xl lg:text-9xl font-display font-bold text-white text-center leading-none tracking-tighter"
+          className="text-6xl md:text-8xl lg:text-9xl font-display font-bold text-[var(--text-primary)] text-center leading-none tracking-tighter"
         >
           {intl.formatMessage({ id: 'animation.text' })}
         </h2>
       </div>
 
-      <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex items-center gap-4 text-white/40 text-[10px] uppercase tracking-[0.3em]">
+      <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex items-center gap-4 text-[var(--text-primary)]/40 text-[10px] uppercase tracking-[0.3em]">
         <span>Interactive</span>
-        <div className="w-12 h-px bg-white/20" />
+        <div className="w-12 h-px bg-[var(--border-color)]" />
         <span>Canvas</span>
       </div>
     </section>
