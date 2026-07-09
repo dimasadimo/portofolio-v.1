@@ -124,7 +124,7 @@ const PortfolioContent: React.FC = () => {
         ))}
       </div>
       <CursorBorder />
-      <GrainOverlay />
+      {/* <GrainOverlay /> */}
 
       <main className="relative noise-bg min-h-screen">
         <div className="relative z-10">

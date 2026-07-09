@@ -3,60 +3,36 @@ import { motion } from 'motion/react';
 import { useIntl } from 'react-intl';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ArrowUpRight, Linkedin, Instagram, Github } from 'lucide-react';
+import { ArrowUpRight, Linkedin, Instagram, Github, File } from 'lucide-react';
 import { cn } from '../lib/utils';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const experiences = [
   {
-    date: "2023 — PRESENT",
-    company: "Studio Alpha",
-    role: "Senior Design Engineer",
-    description: "Leading the design systems team to architect and maintain a multi-platform UI framework used by 200+ developers. Bridging the gap between brand design and complex frontend implementations.",
-    tech: ["React", "TypeScript", "Framer Motion", "Storybook", "Tailwind"],
-    link: "#"
+    date: "2025 — PRESENT",
+    company: "Code ID",
+    role: "Frontend Web Engineer",
+    description: "Leading to maintain a multi-platform UI framework. Bridging the gap between brand design and complex frontend implementations.",
+    tech: ["React", "TypeScript", "Framer Motion", "TanStack", "Tailwind"],
+    link: "https://www.code.id/"
+  },
+  {
+    date: "2024 — 2025",
+    company: "Code ID",
+    role: "Product Specialist Consultant",
+    description: "An integrated position involving project management, UI/UX design, business analysis, and manual QA testing to ensure the delivery of a robust, user-centered application.",
+    tech: ["Project Management", "SQL Server", "PostgreSQL", "SSIS", "Azure DevOps"],
+    link: "https://www.code.id/"
   },
   {
     date: "2021 — 2023",
-    company: "Nexus Fintech",
+    company: "Bussan Auto Finance",
     role: "Frontend Engineer",
-    description: "Developed and shipped high-performance dashboards for crypto asset management. Optimized core web vitals by 40% through component refactoring and smart lazy-loading strategies.",
-    tech: ["Next.js", "RTK Query", "Ethers.js", "Chart.js"],
-    link: "#"
+    description: "Responsible for developing functional code, website maintenance and enhancements for internal web based sales order management system. Application used by sales to input order data and monitor order status.",
+    tech: ["React.js", "SASS", "Redux", "ReduxForm", "Bootstrap"],
+    link: "https://www.baf.id/en"
   },
-  {
-    date: "2019 — 2021",
-    company: "BukaLapak",
-    role: "UI Engineer",
-    description: "Crafted micro-interactions and animations for the homepage and product discovery flows. Collaborated with UX researchers to implement A/B tested checkout experiences.",
-    tech: ["Vue.js", "SCSS", "GSAP", "Webpack"],
-    link: "#"
-  },
-  {
-    date: "2023 — PRESENT",
-    company: "Studio Alpha",
-    role: "Senior Design Engineer",
-    description: "Leading the design systems team to architect and maintain a multi-platform UI framework used by 200+ developers. Bridging the gap between brand design and complex frontend implementations.",
-    tech: ["React", "TypeScript", "Framer Motion", "Storybook", "Tailwind"],
-    link: "#"
-  },
-  {
-    date: "2021 — 2023",
-    company: "Nexus Fintech",
-    role: "Frontend Engineer",
-    description: "Developed and shipped high-performance dashboards for crypto asset management. Optimized core web vitals by 40% through component refactoring and smart lazy-loading strategies.",
-    tech: ["Next.js", "RTK Query", "Ethers.js", "Chart.js"],
-    link: "#"
-  },
-  {
-    date: "2019 — 2021",
-    company: "BukaLapak",
-    role: "UI Engineer",
-    description: "Crafted micro-interactions and animations for the homepage and product discovery flows. Collaborated with UX researchers to implement A/B tested checkout experiences.",
-    tech: ["Vue.js", "SCSS", "GSAP", "Webpack"],
-    link: "#"
-  }
 ];
 
 interface WorkItem {
@@ -116,8 +92,8 @@ const SECTIONS = [
   { id: "introduction", label: "Introduction" },
   { id: "experience", label: "Experience" },
   { id: "project", label: "Project" },
-  { id: "works", label: "Works" },
-  { id: "article", label: "Article" },
+  { id: "works", label: "Works", disabled: true  },
+  { id: "article", label: "Article", disabled: true },
   { id: "bored", label: "Bored?", disabled: true }
 ];
 
@@ -199,8 +175,7 @@ export const Experience: React.FC = () => {
         <div className="md:h-[calc(100vh-200px)] md:sticky md:top-28 flex flex-col justify-between py-4">
           <div className="space-y-6">
             <div className="space-y-4">
-              <h2 className="text-5xl font-display font-bold">Dimas Adimo</h2>
-              <p className="text-xl text-orange font-medium">Frontend Engineer · Design Engineer</p>
+              <h2 className="text-2xl font-display font-bold">Fullstack Engineer · Design Engineer</h2>
               <p className="text-[var(--text-muted)] max-w-xs leading-relaxed">
                 {intl.formatMessage({ id: 'experience.shortBio' })}
               </p>
@@ -252,7 +227,7 @@ export const Experience: React.FC = () => {
             </nav>
           </div>
 
-          <div className="flex gap-6 text-[var(--text-muted)]">
+          <div className="flex gap-6 text-[var(--text-muted)] ">
             <a href="#" className="hover:text-orange transition-colors"><Linkedin size={20} /></a>
             <a href="#" className="hover:text-orange transition-colors"><Instagram size={20} /></a>
             <a href="#" className="hover:text-orange transition-colors"><Github size={20} /></a>
@@ -264,28 +239,33 @@ export const Experience: React.FC = () => {
           {/* Section 1: Introduction */}
           <section id="introduction" className="space-y-6 scroll-mt-28">
             <h1 className="text-[15px] font-medium text-zinc-900">Dimas Adimo</h1>
-            <div className="space-y-4 text-[15px] leading-relaxed text-zinc-500 max-w-xl">
-              <p>I’m a design engineer based in Ireland.</p>
-              <p>
-                I enjoy pushing boundaries and exploring new ways to express myself without limitations. 
-                I’m drawn to the details that most people never notice but always feel.
+            <div className="space-y-4 text-[15px] leading-relaxed max-w-xl">
+              <p className="text-[var(--text-muted)]">
+                I’m a design engineer based in <span className="text-zinc-900 underline underline-offset-4 cursor-pointer"> Jakarta, Indonesia</span>.
               </p>
-              <p>
+              <p className="text-[var(--text-muted)]">
+                I enjoy exploring new ways to express myself without limitations, drawn to the details that most people never notice but always feel
+                ── Bridging the gap between user-centered design & technical problem solving through applications, interfaces & interactions
+              </p>
+              <p className="text-[var(--text-muted)]">
                 I’ve been fortunate to work with teams at 
-                <span className="text-zinc-900"> Avara</span>, 
-                <span className="text-zinc-900"> Opensea</span>, and 
-                <span className="text-zinc-900"> Daybreak</span>, and others.
-              </p>
-              <p>
-                You can reach out to me on <span className="text-zinc-900 underline underline-offset-4 cursor-pointer">Twitter</span> or 
-                see more of my work on <span className="text-zinc-900 underline underline-offset-4 cursor-pointer">GitHub</span>.
+                <span className="text-zinc-900 underline underline-offset-4 cursor-pointer"> Bussan Auto Finance</span>, 
+                <span className="text-zinc-900 underline underline-offset-4 cursor-pointer"> Deloitte</span>, and 
+                <span className="text-zinc-900 underline underline-offset-4 cursor-pointer"> Code.ID</span> & others.
               </p>
             </div>
           </section>
 
           {/* Section 2: Experience */}
           <section id="experience" className="space-y-6 scroll-mt-28">
-            <h2 className="text-[13px] font-medium text-zinc-400 uppercase tracking-widest">Experience</h2>
+            <h2 className="border-b border-gray-400 pb-2 text-[13px] font-medium text-zinc-400 uppercase tracking-widest">
+              <a 
+                href="#experience"
+                className="inline-block -mx-2 rounded px-2 py-1 transition-colors duration-200 hover:bg-zinc-400/50 cursor-pointer"
+              >
+                Experience 5+years
+              </a>
+            </h2>
             <div className="space-y-6">
               {experiences.map((exp, idx) => (
                 <div 
@@ -295,10 +275,20 @@ export const Experience: React.FC = () => {
                   <div className="grid grid-cols-1 lg:grid-cols-[25%_75%] gap-4">
                     <span className="text-xs font-bold text-[var(--text-muted)] py-1">{exp.date}</span>
                     <div className="space-y-3">
-                      <h3 className="text-xl font-bold flex items-center gap-2 group-hover:text-orange transition-colors">
-                        {exp.role} · {exp.company}
-                        <ArrowUpRight size={16} className="opacity-0 group-hover:opacity-100 transition-all translate-x-[-10px] group-hover:translate-x-0" />
-                      </h3>
+                      <a 
+                        href={exp.link} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="group/link inline-block"
+                      >
+                        <h3 className="text-xl font-bold flex items-center gap-2 group-hover:text-orange transition-colors">
+                          {exp.role} · {exp.company}
+                          <ArrowUpRight 
+                            size={16} 
+                            className="opacity-0 group-hover:opacity-100 transition-all translate-x-[-10px] group-hover:translate-x-0" 
+                          />
+                        </h3>
+                      </a>
                       <p className="text-[var(--text-muted)] leading-relaxed">
                         {exp.description}
                       </p>
@@ -306,7 +296,7 @@ export const Experience: React.FC = () => {
                         {exp.tech.map((t, i) => (
                           <span 
                             key={i} 
-                            className="px-3 py-1 rounded-full border border-orange/20 text-[10px] font-bold text-orange uppercase tracking-wider"
+                            className="px-3 py-1 rounded-full border border-orange/20 text-[10px] font-bold text-orange uppercase tracking-wider !bg-gray-300"
                           >
                             {t}
                           </span>
@@ -316,12 +306,34 @@ export const Experience: React.FC = () => {
                   </div>
                 </div>
               ))}
+              <a 
+                href="/my-resume.pdf"
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="group/link inline-block"
+              >
+                <h3 className="text-sm flex items-center gap-2 group-hover/link:text-orange transition-colors">
+                  <File size={16} />
+                  View Full Resume
+                  <ArrowUpRight 
+                    size={16} 
+                    className="opacity-0 group-hover/link:opacity-100 transition-all translate-x-[-4px] group-hover/link:translate-x-0" 
+                  />
+                </h3>
+              </a>
             </div>
           </section>
 
           {/* Section 3: Project */}
           <section id="project" className="space-y-6 scroll-mt-28">
-            <h2 className="text-[13px] font-medium text-zinc-400 uppercase tracking-widest">Featured Projects</h2>
+            <h2 className="border-b border-gray-400 pb-2 text-[13px] font-medium text-zinc-400 uppercase tracking-widest">
+              <a 
+                href="#experience"
+                className="inline-block -mx-2 rounded px-2 py-1 transition-colors duration-200 hover:bg-zinc-400/50 cursor-pointer"
+              >
+                Projects 5+
+              </a>
+            </h2>
             <div className="grid grid-cols-1 gap-4">
               {projects.map((proj, idx) => (
                 <a 
@@ -340,7 +352,7 @@ export const Experience: React.FC = () => {
                     {proj.tags.map((t, i) => (
                       <span 
                         key={i} 
-                        className="px-2.5 py-0.5 rounded-full border border-orange/15 text-[9px] font-bold text-orange uppercase tracking-wider"
+                        className="px-2.5 py-0.5 rounded-full border border-orange/15 text-[9px] font-bold text-orange uppercase tracking-wider !bg-gray-300"
                       >
                         {t}
                       </span>
@@ -352,7 +364,7 @@ export const Experience: React.FC = () => {
           </section>
 
           {/* Section 4: Works */}
-          <section id="works" className="space-y-6 scroll-mt-28">
+          {/* <section id="works" className="space-y-6 scroll-mt-28">
             <h2 className="text-[13px] font-medium text-zinc-400 uppercase tracking-widest">Work 19+</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
               {workItems.map((item, idx) => (
@@ -361,10 +373,10 @@ export const Experience: React.FC = () => {
                 </div>
               ))}
             </div>
-          </section>
+          </section> */}
 
           {/* Section 5: Article */}
-          <section id="article" className="space-y-6 scroll-mt-28 pb-[35vh]">
+          {/* <section id="article" className="space-y-6 scroll-mt-28 pb-[35vh]">
             <h2 className="text-[13px] font-medium text-zinc-400 uppercase tracking-widest">Article</h2>
             <div className="space-y-1">
               {libraryItems.map((item, idx) => (
@@ -400,7 +412,7 @@ export const Experience: React.FC = () => {
                 </div>
               ))}
             </div>
-          </section>
+          </section> */}
 
           {/* Section 6: Bored? (soon) - Commented out as requested */}
           {/*
