@@ -17,6 +17,7 @@ export const Navbar: React.FC = () => {
     }
     (document as any).startViewTransition(() => {
       flushSync(() => {
+        document.documentElement.setAttribute('data-theme', nextTheme);
         setTheme(nextTheme);
       });
     });
