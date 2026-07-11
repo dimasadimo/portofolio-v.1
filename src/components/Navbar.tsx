@@ -1,22 +1,24 @@
 import React from 'react';
+import { flushSync } from 'react-dom';
 import { motion } from 'motion/react';
 import { Sun, Moon, Globe } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { useLanguage } from './Providers';
 
 export const Navbar: React.FC = () => {
-  const { theme, setTheme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
   const { locale, setLocale } = useLanguage();
 
   const toggleTheme = () => {
-    const nextTheme = theme === 'dark' ? 'light' : 'dark';
+    const nextTheme = resolvedTheme === 'dark' ? 'light' : 'dark';
     if (!(document as any).startViewTransition) {
       setTheme(nextTheme);
       return;
     }
     (document as any).startViewTransition(() => {
-      document.documentElement.setAttribute('data-theme', nextTheme);
-      setTheme(nextTheme);
+      flushSync(() => {
+        setTheme(nextTheme);
+      });
     });
   };
 
@@ -52,7 +54,7 @@ export const Navbar: React.FC = () => {
           onClick={toggleTheme}
           className="p-2 rounded-full hover:bg-orange/10 text-[var(--text-muted)] hover:text-orange transition-all"
         >
-          {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+          {resolvedTheme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
         </button>
       </div>
     </motion.nav>
