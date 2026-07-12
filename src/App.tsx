@@ -5,8 +5,8 @@ import { Providers } from './components/Providers';
 import { Navbar } from './components/Navbar';
 import { Experience } from './components/Experience';
 import { CursorBorder } from './components/CursorBorder';
-import { Analytics } from '@vercel/analytics/next';
-import { SpeedInsights } from '@vercel/speed-insights/next';
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 
 const Bubble = ({ index }: { index: number }) => {
   const orangeGradients = [
