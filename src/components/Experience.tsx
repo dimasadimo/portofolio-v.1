@@ -168,11 +168,11 @@ export const Experience: React.FC = () => {
   };
 
   return (
-    <section id="experience-container" className="pt-28 px-4 md:px-50 bg-[var(--bg-primary)]" ref={containerRef}>
-      <div className="container mx-auto grid grid-cols-1 md:grid-cols-[50%_50%] gap-16 relative">
+    <section id="experience-container" className="pt-28 px-6 md:px-12 lg:px-20 xl:px-50 bg-[var(--bg-primary)]" ref={containerRef}>
+      <div className="container mx-auto grid grid-cols-1 lg:grid-cols-[50%_50%] gap-12 lg:gap-16 relative">
         
         {/* Left Side: Sticky */}
-        <div className="md:h-[calc(100vh-200px)] md:sticky md:top-28 flex flex-col justify-between py-4">
+        <div className="lg:h-[calc(100vh-200px)] lg:sticky lg:top-28 flex flex-col justify-between py-4 gap-8 lg:gap-0">
           <div className="space-y-6">
             <div className="space-y-4">
               <h2 className="text-2xl font-display font-bold">
@@ -183,7 +183,7 @@ export const Experience: React.FC = () => {
               </p>
             </div>
 
-            <nav className="hidden md:flex flex-col gap-4 py-12">
+            <nav className="hidden lg:flex flex-col gap-4 py-12">
               {SECTIONS.map((sec) => {
                 const isActive = activeSection === sec.id;
                 const label = intl.formatMessage({ id: `sections.${sec.id}` });
@@ -238,7 +238,7 @@ export const Experience: React.FC = () => {
         </div>
 
         {/* Right Side: Scrollable */}
-        <div className="space-y-24 mt-10 mb-18">
+        <div className="space-y-16 lg:space-y-24 mt-4 lg:mt-10 mb-10 lg:mb-18">
           {/* Section 1: Introduction */}
           <section id="introduction" className="space-y-6 scroll-mt-28">
             <h1 className="text-[15px] font-medium text-[var(--text-primary)]">Dimas Adimo</h1>
@@ -297,7 +297,7 @@ export const Experience: React.FC = () => {
               {experiences.map((exp, idx) => (
                 <div 
                   key={idx} 
-                  className="exp-card group relative p-6 rounded-xl hover:bg-orange/5 transition-colors border border-transparent hover:border-orange/10 cursor-default"
+                  className="exp-card group relative p-4 sm:p-6 rounded-xl hover:bg-orange/5 transition-colors border border-transparent hover:border-orange/10 cursor-default"
                 >
                   <div className="grid grid-cols-1 lg:grid-cols-[25%_75%] gap-4">
                     <span className="text-xs font-bold text-[var(--text-muted)] py-1">
@@ -368,7 +368,7 @@ export const Experience: React.FC = () => {
                 <a 
                   key={idx} 
                   href={proj.link}
-                  className="group block p-6 rounded-xl border border-[var(--border-color)] hover:border-orange/20 hover:bg-orange/5 transition-all duration-300"
+                  className="group block p-4 sm:p-6 rounded-xl border border-[var(--border-color)] hover:border-orange/20 hover:bg-orange/5 transition-all duration-300"
                 >
                   <div className="flex items-center justify-between mb-2">
                     <h3 className="text-[16px] font-semibold text-[var(--text-primary)] group-hover:text-orange transition-colors flex items-center gap-1.5">

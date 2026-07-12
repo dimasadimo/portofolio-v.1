@@ -5,16 +5,8 @@ import { Providers } from './components/Providers';
 import { Navbar } from './components/Navbar';
 import { Experience } from './components/Experience';
 import { CursorBorder } from './components/CursorBorder';
-
-const GrainOverlay = () => (
-  <div
-    className="fixed inset-0 z-20 h-full w-full pointer-events-none opacity-[0.06] mix-blend-overlay"
-    style={{
-      backgroundImage: 'url("https://grainy-gradients.vercel.app/noise.svg")',
-      backgroundRepeat: 'repeat',
-    }}
-  />
-);
+import { Analytics } from '@vercel/analytics/next';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const Bubble = ({ index }: { index: number }) => {
   const orangeGradients = [
@@ -124,8 +116,6 @@ const PortfolioContent: React.FC = () => {
         ))}
       </div>
       <CursorBorder />
-      {/* <GrainOverlay /> */}
-
       <main className="relative noise-bg min-h-screen">
         <div className="relative z-10">
           <Experience />
@@ -139,6 +129,8 @@ const PortfolioContent: React.FC = () => {
         {/* <ResumeMedia />
         <Footer /> */}
       </main>
+      <Analytics />
+      <SpeedInsights />
     </>
   );
 };
