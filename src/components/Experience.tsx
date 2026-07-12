@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { motion } from 'motion/react';
 import { useIntl, FormattedMessage } from 'react-intl';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -33,38 +32,6 @@ const experiences = [
     tech: ["React.js", "SASS", "Redux", "ReduxForm", "Bootstrap"],
     link: "https://www.baf.id/en"
   },
-];
-
-interface WorkItem {
-  image: string;
-  alt: string;
-}
-
-interface LibraryItem {
-  title: string;
-  status?: string;
-  category: string;
-  date: string;
-}
-
-const workItems: WorkItem[] = [
-  { image: "/api/placeholder/400/300", alt: "Project 1" },
-  { image: "/api/placeholder/400/300", alt: "Project 2" },
-  { image: "/api/placeholder/400/300", alt: "Project 3" },
-  { image: "/api/placeholder/400/300", alt: "Project 4" },
-  { image: "/api/placeholder/400/300", alt: "Project 5" },
-  { image: "/api/placeholder/400/300", alt: "Project 6" },
-];
-
-const libraryItems: LibraryItem[] = [
-  { title: "Simply Effective", status: "DRAFT", category: "Craft", date: "00/00" },
-  { title: "Why is the Web Afraid of Sound?", status: "DRAFT", category: "Craft", date: "00/00" },
-  { title: "Understanding Springs", status: "DRAFT", category: "Animation", date: "00/00" },
-  { title: "12 Principles of Animation", category: "Animation", date: "04/08" },
-  { title: "Chasing Approval", category: "Thoughts", date: "28/07" },
-  { title: "White Tees", category: "Fashion", date: "27/07" },
-  { title: "Building vs. Banking", category: "Thoughts", date: "21/06" },
-  { title: "The Concept of Taste", category: "Thoughts", date: "11/03" }
 ];
 
 const projects = [
@@ -103,8 +70,8 @@ export const Experience: React.FC = () => {
   const [activeSection, setActiveSection] = useState("introduction");
 
   useEffect(() => {
-    const cards = gsap.utils.toArray('.exp-card');
-    cards.forEach((card: any) => {
+    const cards = gsap.utils.toArray<HTMLElement>('.exp-card');
+    cards.forEach((card) => {
       gsap.fromTo(card, 
         { opacity: 0, y: 50 },
         {
@@ -170,8 +137,6 @@ export const Experience: React.FC = () => {
   return (
     <section id="experience-container" className="pt-28 px-6 md:px-12 lg:px-20 xl:px-50 bg-[var(--bg-primary)]" ref={containerRef}>
       <div className="container mx-auto grid grid-cols-1 lg:grid-cols-[50%_50%] gap-12 lg:gap-16 relative">
-        
-        {/* Left Side: Sticky */}
         <div className="lg:h-[calc(100vh-200px)] lg:sticky lg:top-28 flex flex-col justify-between py-4 gap-8 lg:gap-0">
           <div className="space-y-6">
             <div className="space-y-4">
@@ -230,16 +195,14 @@ export const Experience: React.FC = () => {
             </nav>
           </div>
 
-          <div className="flex gap-6 text-[var(--text-muted)] ">
+          <div className="flex gap-6 text-[var(--text-muted)]">
             <a href="https://id.linkedin.com/in/dimasadihartomo" target="_blank" rel="noopener noreferrer" className="hover:text-orange transition-colors"><Linkedin size={20} /></a>
             <a href="https://www.instagram.com/dimsaadimo/" target="_blank" rel="noopener noreferrer" className="hover:text-orange transition-colors"><Instagram size={20} /></a>
             <a href="https://github.com/dimasadimo/" target="_blank" rel="noopener noreferrer" className="hover:text-orange transition-colors"><Github size={20} /></a>
           </div>
         </div>
 
-        {/* Right Side: Scrollable */}
         <div className="space-y-16 lg:space-y-24 mt-4 lg:mt-10 mb-10 lg:mb-18">
-          {/* Section 1: Introduction */}
           <section id="introduction" className="space-y-6 scroll-mt-28">
             <h1 className="text-[15px] font-medium text-[var(--text-primary)]">Dimas Adimo</h1>
             <div className="space-y-4 text-[15px] leading-relaxed max-w-xl">
@@ -283,7 +246,6 @@ export const Experience: React.FC = () => {
             </div>
           </section>
 
-          {/* Section 2: Experience */}
           <section id="experience" className="space-y-6 scroll-mt-28">
             <h2 className="border-b border-gray-400 pb-2 text-[13px] font-medium text-zinc-400 uppercase tracking-widest">
               <a 
@@ -353,7 +315,6 @@ export const Experience: React.FC = () => {
             </div>
           </section>
 
-          {/* Section 3: Project */}
           <section id="project" className="space-y-6 scroll-mt-28">
             <h2 className="border-b border-gray-400 pb-2 text-[13px] font-medium text-zinc-400 uppercase tracking-widest">
               <a 
@@ -393,73 +354,6 @@ export const Experience: React.FC = () => {
               ))}
             </div>
           </section>
-
-          {/* Section 4: Works */}
-          {/* <section id="works" className="space-y-6 scroll-mt-28">
-            <h2 className="text-[13px] font-medium text-zinc-400 uppercase tracking-widest">Work 19+</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-              {workItems.map((item, idx) => (
-                <div key={idx} className="aspect-[4/3] rounded-lg bg-zinc-50 border border-zinc-100 overflow-hidden cursor-pointer hover:opacity-80 transition-opacity">
-                  <img src={item.image} alt={item.alt} className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" />
-                </div>
-              ))}
-            </div>
-          </section> */}
-
-          {/* Section 5: Article */}
-          {/* <section id="article" className="space-y-6 scroll-mt-28 pb-[35vh]">
-            <h2 className="text-[13px] font-medium text-zinc-400 uppercase tracking-widest">Article</h2>
-            <div className="space-y-1">
-              {libraryItems.map((item, idx) => (
-                <div 
-                  key={`${item.title}-${idx}`}
-                  className="group flex items-center justify-between py-3 cursor-pointer"
-                >
-                  <div className="flex items-center gap-2">
-                    <span className="text-[15px] text-zinc-800 group-hover:text-zinc-500 transition-colors">
-                      {item.title}
-                    </span>
-                    {item.status && (
-                      <span className="text-[9px] px-1.5 py-0.5 rounded border border-zinc-200 text-zinc-400 font-bold uppercase tracking-widest">
-                        {item.status}
-                      </span>
-                    )}
-                  </div>
-
-                  <div className="flex items-center gap-10">
-                    <span className="hidden md:block text-[13px] text-zinc-400 w-20 text-right">
-                      {item.category}
-                    </span>
-                    <span className="text-[13px] text-zinc-400 tabular-nums w-10 text-right">
-                      {item.date}
-                    </span>
-                    <div className="w-4 flex justify-end">
-                      <ArrowUpRight 
-                        size={14} 
-                        className="text-zinc-400 opacity-0 -translate-y-0.5 translate-x-0.5 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 transition-all duration-300 ease-out" 
-                      />
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </section> */}
-
-          {/* Section 6: Bored? (soon) - Commented out as requested */}
-          {/*
-          <section id="bored" className="space-y-6 scroll-mt-28 pb-[35vh]">
-            <h2 className="text-[13px] font-medium text-zinc-400 uppercase tracking-widest line-through">Bored?</h2>
-            <div className="p-8 rounded-2xl border border-dashed border-zinc-200 bg-zinc-50/20 text-center space-y-4 opacity-50 select-none cursor-not-allowed">
-              <span className="text-[9px] px-2 py-0.5 rounded border border-zinc-200 text-zinc-400 font-bold uppercase tracking-widest bg-zinc-50 inline-block line-through">
-                Disabled
-              </span>
-              <h3 className="text-xl font-bold text-zinc-400 line-through">Play Retro Arcade Games</h3>
-              <p className="text-[14px] text-zinc-400/80 max-w-sm mx-auto leading-relaxed line-through">
-                Take a quick break with vintage retro arcade games like Snake, Tetris, or Breakout. We are building this workspace now!
-              </p>
-            </div>
-          </section>
-          */}
         </div>
       </div>
     </section>
