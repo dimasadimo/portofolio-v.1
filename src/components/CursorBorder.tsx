@@ -186,8 +186,8 @@ export const CursorBorder = () => {
   return (
     <>
       <style>{`
-        * {
-          cursor: none !important;
+        body, a, button, [role="button"] {
+          cursor: none;
         }
         input, textarea, [contenteditable] {
           cursor: auto !important;

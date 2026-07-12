@@ -85,17 +85,17 @@
   },
   "proj": {
     "title": "Projects 5+",
-    "ecosphere": {
-      "title": "EcoSphere Dashboard",
-      "desc": "A real-time environmental monitoring dashboard with complex data visualizations."
+    "uob": {
+      "title": "UOB Infinity",
+      "desc": "Contributed to UOB Infinity digital banking by developing secure payment features, optimizing transaction workflows, and delivering responsive user experiences."
     },
-    "nexus": {
-      "title": "Nexus Marketplace",
-      "desc": "Multi-vendor e-commerce platform with automated logistics and payment integrations."
+    "sandiabaf": {
+      "title": "Sandia BAF",
+      "desc": "Engineered finance solutions for sales and credit management, streamlining business processes through modern web technologies and scalable application architecture."
     },
-    "voyager": {
-      "title": "Voyager UI Kit",
-      "desc": "A comprehensive design system and component library focused on high-density data applications."
+    "telkomedika": {
+      "title": "Telkomedika",
+      "desc": "Built AI-powered healthcare platforms that provide health monitoring, medical analytics, and intelligent dashboards to support patient care and operational efficiency."
     }
   }
 }
