@@ -223,7 +223,7 @@ export const Experience: React.FC = () => {
         )}
 
         {/* Left Side: Sticky */}
-        <div className="lg:h-[calc(100vh-200px)] lg:sticky lg:top-28 flex flex-col justify-between py-4 gap-8 lg:gap-0">
+        <div className="lg:h-[calc(100vh-200px)] lg:sticky lg:top-28 flex flex-col justify-between gap-8 lg:gap-0">
           <div className="space-y-6">
             <div className="space-y-4">
               <h2 className="text-2xl font-display font-bold">
@@ -289,9 +289,9 @@ export const Experience: React.FC = () => {
         </div>
 
         {/* Right Side: Scrollable */}
-        <div className="space-y-16 lg:space-y-24 mt-4 lg:mt-10 mb-10 lg:mb-18">
+        <div className="space-y-16 lg:space-y-24 mt-2 lg:mt-4 mb-4 lg:mb-14">
           {/* Section 1: Introduction */}
-          <section id="introduction" className="space-y-6 scroll-mt-28">
+          <section id="introduction" className="space-y-6 scroll-mt-20">
             <h1 className="text-[15px] font-medium text-[var(--text-primary)]">Dimas Adimo</h1>
             <div className="space-y-4 text-[15px] leading-relaxed max-w-xl">
               <p className="text-[var(--text-muted)]">

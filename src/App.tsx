@@ -7,8 +7,11 @@ import { Experience } from './components/Experience';
 import { CursorBorder } from './components/CursorBorder';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
+import { useIsMobile } from './hooks/useIsMobile';
 
 const Bubble = ({ index }: { index: number }) => {
+  const isMobile = useIsMobile();
+  
   const orangeGradients = [
     'linear-gradient(135deg, #FF6B00 0%, #FF9E00 100%)',
     'linear-gradient(135deg, #FF4D00 0%, #FFB700 100%)',
@@ -24,8 +27,8 @@ const Bubble = ({ index }: { index: number }) => {
       return {
         width: 'clamp(250px, 25vw, 380px)',
         height: 'clamp(250px, 25vw, 380px)',
-        left: 'clamp(-280px, -12vw, -120px)',
-        top: '10%',
+        left: isMobile ? '-240px' : 'clamp(-310px, -14vw, -140px)',
+        top: '0%',
         animate: {
           x: [0, 15, -15, 0],
           y: [0, -25, 20, 0],
@@ -36,10 +39,10 @@ const Bubble = ({ index }: { index: number }) => {
     } else {
       // Bubble 2: Bottom-center large bubble
       return {
-        width: 'clamp(400px, 65vw, 450px)',
-        height: 'clamp(400px, 65vw, 450px)',
-        left: 'clamp(-50px, 22.5vw, 60%)',
-        top: '50%',
+        width: 'clamp(400px, 65vw, 500px)',
+        height: 'clamp(400px, 65vw, 500px)',
+        left: 'clamp(50px, 350vw, 96%)',
+        top: '45%',
         animate: {
           x: [0, -25, 20, 0],
           y: [0, 20, -20, 0],
