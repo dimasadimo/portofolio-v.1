@@ -15,7 +15,7 @@ const orangeGradients = [
   'linear-gradient(135deg, #FF9100 0%, #FFD600 100%)',
   'linear-gradient(135deg, #FB8500 0%, #FFB703 100%)',
 ];
-
+  
 const Bubble = ({ index }: { index: number }) => {
   const isMobile = useIsMobile();
   
@@ -24,9 +24,9 @@ const Bubble = ({ index }: { index: number }) => {
   const config = useMemo(() => {
     if (index === 0) {
       return {
-        width: isMobile ? 'clamp(50px, 25vw, 380px)' : 'clamp(250px, 25vw, 380px)',
+        width: 'clamp(250px, 25vw, 380px)',
         height: 'clamp(250px, 25vw, 380px)',
-        left: isMobile ? '-370px' : 'clamp(-310px, -14vw, -140px)',
+        left: isMobile ? '-670px' : 'clamp(-310px, -14vw, -140px)',
         top: '0%',
         animate: {
           x: [0, 15, -15, 0],
@@ -53,14 +53,18 @@ const Bubble = ({ index }: { index: number }) => {
 
   return (
     <motion.div
-      className="absolute rounded-full blur-[50px] md:blur-[70px] will-change-transform"
+      className={`absolute rounded-full blur-[50px] md:blur-[70px] will-change-transform ${
+        index === 0 
+          ? '-left-[250px] md:left-[clamp(-310px,-14vw,-140px)]' 
+          : ''
+      }`}
       style={{
         width: config.width,
         height: config.height,
-        left: config.left,
         top: config.top,
         background: color,
         opacity: 0.85,
+        ...(index !== 0 && { left: config.left })
       }}
       animate={config.animate}
       transition={{
