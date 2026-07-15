@@ -26,7 +26,7 @@ const Bubble = ({ index }: { index: number }) => {
       return {
         width: 'clamp(250px, 25vw, 380px)',
         height: 'clamp(250px, 25vw, 380px)',
-        left: isMobile ? '-270px' : 'clamp(-310px, -14vw, -140px)',
+        left: isMobile ? '-370px' : 'clamp(-310px, -14vw, -140px)',
         top: '0%',
         animate: {
           x: [0, 15, -15, 0],
