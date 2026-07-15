@@ -6,6 +6,8 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowUpRight, Linkedin, Instagram, Github, File } from 'lucide-react';
 import { cn } from '../lib/utils';
+import Typewriter from './TypeWriter';
+import UnderlineToBackground from './UnderlineBackground';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -229,6 +231,7 @@ export const Experience: React.FC = () => {
               <h2 className="text-2xl font-display font-bold">
                 {intl.formatMessage({ id: 'intro.headline' })}
               </h2>
+            
               <p className="text-[var(--text-muted)] max-w-xs leading-relaxed">
                 {intl.formatMessage({ id: 'experience.shortBio' })}
               </p>
@@ -298,10 +301,30 @@ export const Experience: React.FC = () => {
                 <FormattedMessage
                   id="intro.p1"
                   values={{
-                    location: (
-                      <span className="text-[var(--text-primary)] underline underline-offset-4 cursor-pointer">
-                        {intl.formatMessage({ id: 'intro.p1Location' })}
+                    role: (
+                      <span className="inline-block min-w-[120px]">
+                        <Typewriter
+                          text={[
+                            "Design Engineer",
+                            "Fullstack Developer"
+                          ]}
+                          speed={70}
+                          waitTime={1500}
+                          deleteSpeed={40}
+                          cursorChar={"_"}
+                          className="text-[var(--text-muted)]"
+                          cursorClassName="text-[var(--color-orange)]"
+                        />
                       </span>
+                    ),
+                    location: (
+                      <UnderlineToBackground
+                        targetTextColor="#f0f0f0"
+                        className="text-[var(--text-primary)] cursor-pointer"
+                        underlineHeightRatio={0.07}
+                      >
+                        {intl.formatMessage({ id: 'intro.p1Location' })}
+                      </UnderlineToBackground>
                     )
                   }}
                 />
@@ -314,19 +337,31 @@ export const Experience: React.FC = () => {
                   id="intro.p3"
                   values={{
                     baf: (
-                      <span className="text-[var(--text-primary)] underline underline-offset-4 cursor-pointer">
+                      <UnderlineToBackground
+                        targetTextColor="#f0f0f0"
+                        className="text-[var(--text-primary)] cursor-pointer"
+                        underlineHeightRatio={0.07}
+                      >
                         {intl.formatMessage({ id: 'intro.baf' })}
-                      </span>
+                      </UnderlineToBackground>
                     ),
                     deloitte: (
-                      <span className="text-[var(--text-primary)] underline underline-offset-4 cursor-pointer">
+                      <UnderlineToBackground
+                        targetTextColor="#f0f0f0"
+                        className="text-[var(--text-primary)] cursor-pointer"
+                        underlineHeightRatio={0.07}
+                      >
                         {intl.formatMessage({ id: 'intro.deloitte' })}
-                      </span>
+                      </UnderlineToBackground>
                     ),
                     codeid: (
-                      <span className="text-[var(--text-primary)] underline underline-offset-4 cursor-pointer">
+                      <UnderlineToBackground
+                        targetTextColor="#f0f0f0"
+                        className="text-[var(--text-primary)] cursor-pointer"
+                        underlineHeightRatio={0.07}
+                      >
                         {intl.formatMessage({ id: 'intro.codeid' })}
-                      </span>
+                      </UnderlineToBackground>
                     )
                   }}
                 />

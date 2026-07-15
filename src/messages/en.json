@@ -56,7 +56,7 @@
   },
   "intro": {
     "headline": "Fullstack Engineer · Design Engineer",
-    "p1": "I’m a design engineer based in {location}.",
+    "p1": "I’m a {role} based in {location}.",
     "p1Location": "Jakarta, Indonesia",
     "p2": "I enjoy exploring new ways to express myself without limitations, drawn to the details that most people never notice but always feel ── Bridging the gap between user-centered design & technical problem solving through applications, interfaces & interactions",
     "p3": "I’ve been fortunate to work with teams at {baf}, {deloitte}, and {codeid} & others.",

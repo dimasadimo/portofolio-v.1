@@ -56,7 +56,7 @@
   },
   "intro": {
     "headline": "Fullstack Engineer · Design Engineer",
-    "p1": "Saya design engineer yang based di {location}.",
+    "p1": "Saya {role} yang based di {location}.",
     "p1Location": "Jakarta, Indonesia",
     "p2": "Saya suka explore cara-cara baru buat berekspresi tanpa batas. Selalu tertarik sama detail kecil yang mungkin sering kelewatan tapi kerasa impact-nya ── Nge-bridge gap antara user-centered design & technical problem solving lewat aplikasi, interface, dan interaksi yang seamless.",
     "p3": "Sejauh ini, saya beruntung bisa kolaborasi bareng tim keren di {baf}, {deloitte}, {codeid}, dan lainnya.",
