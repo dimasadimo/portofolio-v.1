@@ -24,7 +24,7 @@ const Bubble = ({ index }: { index: number }) => {
   const config = useMemo(() => {
     if (index === 0) {
       return {
-        width: 'clamp(250px, 25vw, 380px)',
+        width: isMobile ? 'clamp(50px, 25vw, 380px)' : 'clamp(250px, 25vw, 380px)',
         height: 'clamp(250px, 25vw, 380px)',
         left: isMobile ? '-370px' : 'clamp(-310px, -14vw, -140px)',
         top: '0%',
