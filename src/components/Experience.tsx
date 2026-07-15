@@ -319,8 +319,8 @@ export const Experience: React.FC = () => {
                     ),
                     location: (
                       <UnderlineToBackground
-                        targetTextColor="#f0f0f0"
-                        className="text-[var(--text-primary)] cursor-pointer"
+                          targetTextColor="var(--bg-primary)"
+                          className="text-[var(--text-primary)] cursor-pointer"
                         underlineHeightRatio={0.07}
                       >
                         {intl.formatMessage({ id: 'intro.p1Location' })}
@@ -338,7 +338,7 @@ export const Experience: React.FC = () => {
                   values={{
                     baf: (
                       <UnderlineToBackground
-                        targetTextColor="#f0f0f0"
+                        targetTextColor="var(--bg-primary)"
                         className="text-[var(--text-primary)] cursor-pointer"
                         underlineHeightRatio={0.07}
                       >
@@ -347,7 +347,7 @@ export const Experience: React.FC = () => {
                     ),
                     deloitte: (
                       <UnderlineToBackground
-                        targetTextColor="#f0f0f0"
+                        targetTextColor="var(--bg-primary)"
                         className="text-[var(--text-primary)] cursor-pointer"
                         underlineHeightRatio={0.07}
                       >
@@ -356,7 +356,7 @@ export const Experience: React.FC = () => {
                     ),
                     codeid: (
                       <UnderlineToBackground
-                        targetTextColor="#f0f0f0"
+                        targetTextColor="var(--bg-primary)"
                         className="text-[var(--text-primary)] cursor-pointer"
                         underlineHeightRatio={0.07}
                       >
