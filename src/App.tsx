@@ -9,21 +9,20 @@ import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 import { useIsMobile } from './hooks/useIsMobile';
 
+const orangeGradients = [
+  'linear-gradient(135deg, #FF6B00 0%, #FF9E00 100%)',
+  'linear-gradient(135deg, #FF4D00 0%, #FFB700 100%)',
+  'linear-gradient(135deg, #FF9100 0%, #FFD600 100%)',
+  'linear-gradient(135deg, #FB8500 0%, #FFB703 100%)',
+];
+
 const Bubble = ({ index }: { index: number }) => {
   const isMobile = useIsMobile();
   
-  const orangeGradients = [
-    'linear-gradient(135deg, #FF6B00 0%, #FF9E00 100%)',
-    'linear-gradient(135deg, #FF4D00 0%, #FFB700 100%)',
-    'linear-gradient(135deg, #FF9100 0%, #FFD600 100%)',
-    'linear-gradient(135deg, #FB8500 0%, #FFB703 100%)',
-  ];
   const color = useMemo(() => orangeGradients[index % orangeGradients.length], [index]);
 
-  // Precise positions, sizes, and hover drifts mapped to the user's cyan drawings
   const config = useMemo(() => {
     if (index === 0) {
-      // Bubble 1: Left-side edge bubble (vertically centered)
       return {
         width: 'clamp(250px, 25vw, 380px)',
         height: 'clamp(250px, 25vw, 380px)',
@@ -37,7 +36,6 @@ const Bubble = ({ index }: { index: number }) => {
         duration: 18,
       };
     } else {
-      // Bubble 2: Bottom-center large bubble
       return {
         width: 'clamp(400px, 65vw, 500px)',
         height: 'clamp(400px, 65vw, 500px)',
@@ -102,6 +100,18 @@ const PortfolioContent: React.FC = () => {
 
   return (
     <>
+      <motion.div
+        className="fixed inset-0 z-[9999] pointer-events-none flex items-center justify-center bg-transparent overflow-hidden"
+        initial={{ clipPath: 'circle(150% at 50% 0%)' }}
+        animate={{ clipPath: 'circle(0% at 50% 0%)' }}
+        transition={{ duration: 1.4, ease: [0.76, 0, 0.24, 1] }}
+      >
+        <div 
+          className="absolute w-[200vw] h-[200vw] rounded-full blur-[40px] border-[8px] border-orange-500/40" 
+          style={{ backgroundImage: orangeGradients[0] }}
+        />
+      </motion.div>
+
       <Navbar />
       <div 
         className="fixed inset-0 z-0 pointer-events-none"
@@ -123,14 +133,6 @@ const PortfolioContent: React.FC = () => {
         <div className="relative z-10">
           <Experience />
         </div>
-        {/* <Hero />
-        <div id="works">
-          <Projects />
-        </div>
-        <AnimationShowcase />
-        <GameRoom /> */}
-        {/* <ResumeMedia />
-        <Footer /> */}
       </main>
       <Analytics />
       <SpeedInsights />

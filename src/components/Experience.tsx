@@ -457,7 +457,7 @@ export const Experience: React.FC = () => {
                   onMouseEnter={() => setHoveredImage(proj.image)}
                   onMouseLeave={() => setHoveredImage(null)}
                   onMouseMove={handleMouseMove}
-                  className="group block p-4 sm:p-6 rounded-xl border border-[var(--border-color)] hover:border-orange/20 hover:bg-orange/5 transition-all duration-300"
+                  className="group block p-4 sm:p-6 rounded-xl hover:border-orange/20 hover:bg-orange/5 transition-all duration-300"
                 >
                   <div className="flex items-center justify-between mb-2">
                     <h3 className="text-[16px] font-semibold text-[var(--text-primary)] group-hover:text-orange transition-colors flex items-center gap-1.5">
