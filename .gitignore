@@ -1,8 +1,35 @@
+# Dependencies
 node_modules/
-build/
+
+# Build output
 dist/
+build/
+*.tsbuildinfo
+
+# Test / coverage output
 coverage/
-.DS_Store
+test-results/
+playwright-report/
+
+# Caches
+.eslintcache
+.vite/
 *.log
+
+# Environment — never commit real values
 .env*
 !.env.example
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+**/.DS_Store
+Thumbs.db
+
+# Tooling (local, machine-specific)
+.claude/
+.vercel/
