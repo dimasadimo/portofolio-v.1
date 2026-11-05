@@ -1,10 +1,13 @@
+'use client';
+
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowUpRight, File, Github, Instagram, Linkedin } from 'lucide-react';
 import { AnimatePresence, motion, useSpring } from 'motion/react';
+import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 import React, { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { FormattedMessage, useIntl } from 'react-intl';
 
 import Typewriter from '@/components/type-writer';
 import UnderlineToBackground from '@/components/underline-background';
@@ -83,7 +86,7 @@ const SECTIONS = [
 ];
 
 export const Experience: React.FC = () => {
-  const intl = useIntl();
+  const t = useTranslations();
   const containerRef = useRef<HTMLDivElement>(null);
   const [activeSection, setActiveSection] = useState('introduction');
   const [hoveredImage, setHoveredImage] = useState<string | null>(null);
@@ -226,9 +229,12 @@ export const Experience: React.FC = () => {
                   }}
                   className="pointer-events-none hidden overflow-hidden border border-white/20 bg-zinc-900 shadow-2xl md:block"
                 >
-                  <img
+                  <Image
                     src={hoveredImage}
-                    alt="Project Preview"
+                    alt="Project preview"
+                    width={IMAGE_CONFIG.width}
+                    height={IMAGE_CONFIG.height}
+                    sizes={`${IMAGE_CONFIG.width}px`}
                     className="h-full w-full object-cover"
                   />
                 </motion.div>
@@ -241,19 +247,17 @@ export const Experience: React.FC = () => {
         <div className="flex flex-col justify-between gap-8 lg:sticky lg:top-28 lg:h-[calc(100vh-200px)] lg:gap-0">
           <div className="space-y-6">
             <div className="space-y-4">
-              <h2 className="font-display text-2xl font-bold">
-                {intl.formatMessage({ id: 'intro.headline' })}
-              </h2>
+              <h2 className="font-display text-2xl font-bold">{t('intro.headline')}</h2>
 
               <p className="max-w-xs leading-relaxed text-[var(--text-muted)]">
-                {intl.formatMessage({ id: 'experience.shortBio' })}
+                {t('experience.shortBio')}
               </p>
             </div>
 
             <nav className="hidden flex-col gap-4 py-12 lg:flex">
               {SECTIONS.map((sec) => {
                 const isActive = activeSection === sec.id;
-                const label = intl.formatMessage({ id: `sections.${sec.id}` });
+                const label = t(`sections.${sec.id}`);
 
                 if (sec.disabled) {
                   return (
@@ -338,68 +342,60 @@ export const Experience: React.FC = () => {
             <h1 className="text-[15px] font-medium text-[var(--text-primary)]">Dimas Adimo</h1>
             <div className="max-w-xl space-y-4 text-[15px] leading-relaxed">
               <p className="text-[var(--text-muted)]">
-                <FormattedMessage
-                  id="intro.p1"
-                  values={{
-                    role: (
-                      <span className="inline-block min-w-[120px]">
-                        <Typewriter
-                          text={['Design Engineer', 'Fullstack Developer']}
-                          speed={70}
-                          waitTime={1500}
-                          deleteSpeed={40}
-                          cursorChar={'_'}
-                          className="text-[var(--text-muted)]"
-                          cursorClassName="text-[var(--color-orange)]"
-                        />
-                      </span>
-                    ),
-                    location: (
-                      <UnderlineToBackground
-                        targetTextColor="var(--bg-primary)"
-                        className="cursor-pointer text-[var(--text-primary)]"
-                        underlineHeightRatio={0.07}
-                      >
-                        {intl.formatMessage({ id: 'intro.p1Location' })}
-                      </UnderlineToBackground>
-                    ),
-                  }}
-                />
+                {t.rich('intro.p1', {
+                  role: () => (
+                    <span className="inline-block min-w-[120px]">
+                      <Typewriter
+                        as="span"
+                        text={['Design Engineer', 'Fullstack Developer']}
+                        speed={70}
+                        waitTime={1500}
+                        deleteSpeed={40}
+                      />
+                    </span>
+                  ),
+                  location: () => (
+                    <UnderlineToBackground
+                      targetTextColor="var(--bg-primary)"
+                      className="cursor-pointer text-[var(--text-primary)]"
+                      underlineHeightRatio={0.07}
+                    >
+                      {t('intro.p1Location')}
+                    </UnderlineToBackground>
+                  ),
+                })}
               </p>
-              <p className="text-[var(--text-muted)]">{intl.formatMessage({ id: 'intro.p2' })}</p>
+              <p className="text-[var(--text-muted)]">{t('intro.p2')}</p>
               <p className="text-[var(--text-muted)]">
-                <FormattedMessage
-                  id="intro.p3"
-                  values={{
-                    baf: (
-                      <UnderlineToBackground
-                        targetTextColor="var(--bg-primary)"
-                        className="cursor-pointer text-[var(--text-primary)]"
-                        underlineHeightRatio={0.07}
-                      >
-                        {intl.formatMessage({ id: 'intro.baf' })}
-                      </UnderlineToBackground>
-                    ),
-                    deloitte: (
-                      <UnderlineToBackground
-                        targetTextColor="var(--bg-primary)"
-                        className="cursor-pointer text-[var(--text-primary)]"
-                        underlineHeightRatio={0.07}
-                      >
-                        {intl.formatMessage({ id: 'intro.deloitte' })}
-                      </UnderlineToBackground>
-                    ),
-                    codeid: (
-                      <UnderlineToBackground
-                        targetTextColor="var(--bg-primary)"
-                        className="cursor-pointer text-[var(--text-primary)]"
-                        underlineHeightRatio={0.07}
-                      >
-                        {intl.formatMessage({ id: 'intro.codeid' })}
-                      </UnderlineToBackground>
-                    ),
-                  }}
-                />
+                {t.rich('intro.p3', {
+                  baf: () => (
+                    <UnderlineToBackground
+                      targetTextColor="var(--bg-primary)"
+                      className="cursor-pointer text-[var(--text-primary)]"
+                      underlineHeightRatio={0.07}
+                    >
+                      {t('intro.baf')}
+                    </UnderlineToBackground>
+                  ),
+                  deloitte: () => (
+                    <UnderlineToBackground
+                      targetTextColor="var(--bg-primary)"
+                      className="cursor-pointer text-[var(--text-primary)]"
+                      underlineHeightRatio={0.07}
+                    >
+                      {t('intro.deloitte')}
+                    </UnderlineToBackground>
+                  ),
+                  codeid: () => (
+                    <UnderlineToBackground
+                      targetTextColor="var(--bg-primary)"
+                      className="cursor-pointer text-[var(--text-primary)]"
+                      underlineHeightRatio={0.07}
+                    >
+                      {t('intro.codeid')}
+                    </UnderlineToBackground>
+                  ),
+                })}
               </p>
             </div>
           </section>
@@ -411,7 +407,7 @@ export const Experience: React.FC = () => {
                 href="#experience"
                 className="-mx-2 inline-block cursor-pointer rounded px-2 py-1 transition-colors duration-200 hover:bg-zinc-400/50"
               >
-                {intl.formatMessage({ id: 'exp.years' })}
+                {t('exp.years')}
               </a>
             </h2>
             <div className="space-y-6">
@@ -422,7 +418,7 @@ export const Experience: React.FC = () => {
                 >
                   <div className="grid grid-cols-1 gap-4 lg:grid-cols-[25%_75%]">
                     <span className="py-1 text-xs font-bold text-[var(--text-muted)]">
-                      {intl.formatMessage({ id: exp.dateKey })}
+                      {t(exp.dateKey)}
                     </span>
                     <div className="space-y-3">
                       <a
@@ -432,16 +428,14 @@ export const Experience: React.FC = () => {
                         className="group/link inline-block"
                       >
                         <h3 className="group-hover:text-orange flex items-center gap-2 text-xl font-bold transition-colors">
-                          {intl.formatMessage({ id: exp.roleKey })} · {exp.company}
+                          {t(exp.roleKey)} · {exp.company}
                           <ArrowUpRight
                             size={16}
                             className="translate-x-[-10px] opacity-0 transition-all group-hover:translate-x-0 group-hover:opacity-100"
                           />
                         </h3>
                       </a>
-                      <p className="leading-relaxed text-[var(--text-muted)]">
-                        {intl.formatMessage({ id: exp.descKey })}
-                      </p>
+                      <p className="leading-relaxed text-[var(--text-muted)]">{t(exp.descKey)}</p>
                       <div className="flex flex-wrap gap-2 pt-2">
                         {exp.tech.map((t, i) => (
                           <span
@@ -464,7 +458,7 @@ export const Experience: React.FC = () => {
               >
                 <h3 className="group-hover/link:text-orange flex items-center gap-2 text-sm transition-colors">
                   <File size={16} />
-                  {intl.formatMessage({ id: 'exp.resume' })}
+                  {t('exp.resume')}
                   <ArrowUpRight
                     size={16}
                     className="translate-x-[-4px] opacity-0 transition-all group-hover/link:translate-x-0 group-hover/link:opacity-100"
@@ -481,7 +475,7 @@ export const Experience: React.FC = () => {
                 href="#project"
                 className="-mx-2 inline-block cursor-pointer rounded px-2 py-1 transition-colors duration-200 hover:bg-zinc-400/50"
               >
-                {intl.formatMessage({ id: 'proj.title' })}
+                {t('proj.title')}
               </a>
             </h2>
             <div className="grid grid-cols-1 gap-4">
@@ -496,7 +490,7 @@ export const Experience: React.FC = () => {
                 >
                   <div className="mb-2 flex items-center justify-between">
                     <h3 className="group-hover:text-orange flex items-center gap-1.5 text-[16px] font-semibold text-[var(--text-primary)] transition-colors">
-                      {intl.formatMessage({ id: proj.titleKey })}
+                      {t(proj.titleKey)}
                       <ArrowUpRight
                         size={14}
                         className="translate-x-0.5 -translate-y-0.5 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:translate-y-0 group-hover:opacity-100"
@@ -504,7 +498,7 @@ export const Experience: React.FC = () => {
                     </h3>
                   </div>
                   <p className="mb-4 text-[14px] leading-relaxed text-[var(--text-muted)]">
-                    {intl.formatMessage({ id: proj.descKey })}
+                    {t(proj.descKey)}
                   </p>
                   <div className="flex flex-wrap gap-2">
                     {proj.tags.map((t, i) => (

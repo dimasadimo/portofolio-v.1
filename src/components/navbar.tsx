@@ -1,17 +1,30 @@
+'use client';
+
 import { Globe, Moon, Sun } from 'lucide-react';
 import { motion } from 'motion/react';
-import { useTheme } from 'next-themes';
-import React from 'react';
+import { useLocale } from 'next-intl';
+import React, { useTransition } from 'react';
 import { flushSync } from 'react-dom';
 
-import { useLanguage } from '@/hooks/use-language';
+import { useTheme } from '@/hooks/use-theme';
+import { usePathname, useRouter } from '@/i18n/navigation';
+import type { Locale } from '@/i18n/routing';
 
 export const Navbar: React.FC = () => {
-  const { resolvedTheme, setTheme } = useTheme();
-  const { locale, setLocale } = useLanguage();
+  const { theme, setTheme } = useTheme();
+  const locale = useLocale() as Locale;
+  const router = useRouter();
+  const pathname = usePathname();
+  const [isPending, startTransition] = useTransition();
+
+  // Locale now lives in the URL, so switching is a navigation, not local state.
+  const toggleLocale = () => {
+    const next: Locale = locale === 'en' ? 'id' : 'en';
+    startTransition(() => router.replace(pathname, { locale: next }));
+  };
 
   const toggleTheme = () => {
-    const nextTheme = resolvedTheme === 'dark' ? 'light' : 'dark';
+    const nextTheme = theme === 'dark' ? 'light' : 'dark';
     const startViewTransition = document.startViewTransition?.bind(document);
 
     if (!startViewTransition) {
@@ -21,7 +34,6 @@ export const Navbar: React.FC = () => {
 
     const transition = startViewTransition(() => {
       flushSync(() => {
-        document.documentElement.setAttribute('data-theme', nextTheme);
         setTheme(nextTheme);
       });
     });
@@ -48,8 +60,11 @@ export const Navbar: React.FC = () => {
       {/* Language Toggle */}
       <div className="flex flex-1 items-center">
         <button
-          onClick={() => setLocale(locale === 'en' ? 'id' : 'en')}
-          className="hover:text-orange flex items-center gap-2 text-[12px] font-bold tracking-widest text-[var(--text-muted)] uppercase transition-colors"
+          type="button"
+          onClick={toggleLocale}
+          disabled={isPending}
+          aria-label={`Switch language, currently ${locale.toUpperCase()}`}
+          className="hover:text-orange flex items-center gap-2 text-[12px] font-bold tracking-widest text-[var(--text-muted)] uppercase transition-colors disabled:opacity-50"
         >
           <Globe size={12} />
           <span>{locale.toUpperCase()}</span>
@@ -66,7 +81,7 @@ export const Navbar: React.FC = () => {
           onClick={toggleTheme}
           className="hover:bg-orange/10 hover:text-orange rounded-full p-2 text-[var(--text-muted)] transition-all"
         >
-          {resolvedTheme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
+          {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
         </button>
       </div>
     </motion.nav>

@@ -1,3 +1,5 @@
+'use client';
+
 import { motion, type Variants } from 'motion/react';
 import { type ElementType, type HTMLAttributes, useEffect, useMemo, useState } from 'react';
 

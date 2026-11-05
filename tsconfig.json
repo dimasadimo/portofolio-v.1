@@ -5,24 +5,35 @@
     "lib": ["ES2022", "DOM", "DOM.Iterable"],
     "moduleResolution": "bundler",
     "jsx": "react-jsx",
-
     "strict": true,
     "noUncheckedIndexedAccess": true,
     "noImplicitOverride": true,
     "noFallthroughCasesInSwitch": true,
     "verbatimModuleSyntax": true,
-
+    "allowJs": true,
     "isolatedModules": true,
     "moduleDetection": "force",
     "resolveJsonModule": true,
-    "allowImportingTsExtensions": true,
+    "esModuleInterop": true,
     "skipLibCheck": true,
+    "incremental": true,
     "noEmit": true,
-
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
     }
   },
-  "include": ["src", "vite.config.ts", "eslint.config.mjs"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    ".next/dev/types/**/*.ts"
+  ],
+  "exclude": ["node_modules"]
 }

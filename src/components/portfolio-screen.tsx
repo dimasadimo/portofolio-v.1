@@ -1,3 +1,5 @@
+'use client';
+
 import Lenis from '@studio-freight/lenis';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
@@ -7,7 +9,6 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { CursorBorder } from '@/components/cursor-border';
 import { Experience } from '@/components/experience';
 import { Navbar } from '@/components/navbar';
-import { Providers } from '@/components/providers';
 import { useIsMobile } from '@/hooks/use-is-mobile';
 
 const orangeGradients = [
@@ -141,10 +142,6 @@ const PortfolioContent: React.FC = () => {
   );
 };
 
-export default function App() {
-  return (
-    <Providers>
-      <PortfolioContent />
-    </Providers>
-  );
+export function PortfolioScreen() {
+  return <PortfolioContent />;
 }

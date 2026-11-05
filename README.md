@@ -1,13 +1,15 @@
 # Portfolio — dimasadimo.com
 
-Personal portfolio site. **React 19 + Vite 6 + Tailwind CSS v4**, deployed as a static SPA.
+Personal portfolio site. **Next.js 16 (App Router) + React 19 + Tailwind CSS v4**, deployed on Vercel.
 
 ## Setup
+
+Requires **Node 20.19+ or 22.12+** — Node 21 is EOL and will not build.
 
 ```bash
 nvm use          # Node 22 (see .nvmrc)
 npm ci
-npm run dev      # http://localhost:3000
+npm run dev      # http://localhost:3000/en
 ```
 
 ## Commands
@@ -38,17 +40,20 @@ Commits follow [Conventional Commits](https://www.conventionalcommits.org/)
 
 ```
 src/
-├── app.tsx              # root composition
-├── main.tsx             # entry — mounts the root ErrorBoundary
+├── app/[locale]/        # routes: layout, page, error, not-found
+├── app/globals.css      # Tailwind v4 @theme tokens
 ├── components/          # kebab-case, one component per file
 ├── hooks/               # use-*.ts
-├── lib/                 # pure utils, context definitions
+├── i18n/                # routing, navigation, request config
+├── lib/                 # pure utils
 ├── messages/            # en.json / id.json — add every key to both
-├── test/                # test setup
-└── index.css            # Tailwind v4 @theme tokens
+├── proxy.ts             # locale middleware
+└── test/
 ```
 
 ## i18n
 
-Two locales: `en` (default) and `id`. Every user-facing string lives in
-`src/messages/*.json` — **add new keys to both files in the same change.**
+Two locales: `en` (default) and `id`, served at `/en` and `/id`. Every user-facing string
+lives in `src/messages/*.json` — **add new keys to both files in the same change.**
+
+Rich text uses next-intl tag syntax — `<role></role>`, not `{role}`.

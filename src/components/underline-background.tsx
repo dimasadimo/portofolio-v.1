@@ -1,3 +1,5 @@
+'use client';
+
 import { motion, type ValueAnimationTransition } from 'motion/react';
 import {
   type ElementType,
@@ -113,8 +115,10 @@ const UnderlineToBackground = ({
       ref={textRef}
       {...props}
     >
-      <motion.div
-        className="absolute w-full bg-current"
+      {/* A span, not a div: this renders inside <p> and a div there is invalid HTML
+          (the browser relocates it, which breaks hydration). `block` keeps the layout. */}
+      <motion.span
+        className="absolute block w-full bg-current"
         style={{
           height: 'var(--underline-height)',
           bottom: 'calc(-1 * var(--underline-padding))',

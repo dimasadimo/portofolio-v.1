@@ -7,7 +7,7 @@ import globals from 'globals';
 import tseslint from 'typescript-eslint';
 
 export default tseslint.config(
-  { ignores: ['dist', 'node_modules', 'public'] },
+  { ignores: ['.next', 'out', 'dist', 'node_modules', 'public', 'next-env.d.ts'] },
 
   // Type-checked linting for app source only.
   {
@@ -59,9 +59,26 @@ export default tseslint.config(
     },
   },
 
-  // Build/config files: Node globals, no type-aware rules.
+  // Next.js route files must export generateMetadata / generateStaticParams / metadata
+  // alongside the default component — react-refresh's rule does not apply to them.
   {
-    files: ['*.{config,setup}.{ts,mjs,js}', 'eslint.config.mjs', 'vite.config.ts'],
+    files: ['src/app/**/*.{ts,tsx}', 'src/proxy.ts', 'src/i18n/**/*.ts'],
+    rules: { 'react-refresh/only-export-components': 'off' },
+  },
+
+  // Root TypeScript config files: typed linting, Node globals.
+  {
+    files: ['*.config.ts'],
+    extends: [js.configs.recommended, ...tseslint.configs.recommendedTypeChecked],
+    languageOptions: {
+      globals: globals.node,
+      parserOptions: { projectService: true, tsconfigRootDir: import.meta.dirname },
+    },
+  },
+
+  // Plain JS config files: no type-aware rules.
+  {
+    files: ['*.{config,setup}.{mjs,js}', 'eslint.config.mjs'],
     extends: [js.configs.recommended],
     languageOptions: { globals: globals.node },
   },
