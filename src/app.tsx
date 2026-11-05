@@ -1,13 +1,14 @@
-import React, { useEffect, useMemo, useState } from 'react';
-import { motion } from 'motion/react';
 import Lenis from '@studio-freight/lenis';
-import { Providers } from './components/Providers';
-import { Navbar } from './components/Navbar';
-import { Experience } from './components/Experience';
-import { CursorBorder } from './components/CursorBorder';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
-import { useIsMobile } from './hooks/useIsMobile';
+import { motion } from 'motion/react';
+import React, { useEffect, useMemo, useState } from 'react';
+
+import { CursorBorder } from '@/components/cursor-border';
+import { Experience } from '@/components/experience';
+import { Navbar } from '@/components/navbar';
+import { Providers } from '@/components/providers';
+import { useIsMobile } from '@/hooks/use-is-mobile';
 
 const orangeGradients = [
   'linear-gradient(135deg, #FF6B00 0%, #FF9E00 100%)',
@@ -15,10 +16,10 @@ const orangeGradients = [
   'linear-gradient(135deg, #FF9100 0%, #FFD600 100%)',
   'linear-gradient(135deg, #FB8500 0%, #FFB703 100%)',
 ];
-  
+
 const Bubble = ({ index }: { index: number }) => {
   const isMobile = useIsMobile();
-  
+
   const color = useMemo(() => orangeGradients[index % orangeGradients.length], [index]);
 
   const config = useMemo(() => {
@@ -49,14 +50,12 @@ const Bubble = ({ index }: { index: number }) => {
         duration: 22,
       };
     }
-  }, [index]);
+  }, [index, isMobile]);
 
   return (
     <motion.div
-      className={`absolute rounded-full blur-[50px] md:blur-[70px] will-change-transform ${
-        index === 0 
-          ? '-left-[250px] md:left-[clamp(-310px,-14vw,-140px)]' 
-          : ''
+      className={`absolute rounded-full blur-[50px] will-change-transform md:blur-[70px] ${
+        index === 0 ? '-left-[250px] md:left-[clamp(-310px,-14vw,-140px)]' : ''
       }`}
       style={{
         width: config.width,
@@ -64,7 +63,7 @@ const Bubble = ({ index }: { index: number }) => {
         top: config.top,
         background: color,
         opacity: 0.85,
-        ...(index !== 0 && { left: config.left })
+        ...(index !== 0 && { left: config.left }),
       }}
       animate={config.animate}
       transition={{
@@ -105,35 +104,33 @@ const PortfolioContent: React.FC = () => {
   return (
     <>
       <motion.div
-        className="fixed inset-0 z-[9999] pointer-events-none flex items-center justify-center bg-transparent overflow-hidden"
+        className="pointer-events-none fixed inset-0 z-[9999] flex items-center justify-center overflow-hidden bg-transparent"
         initial={{ clipPath: 'circle(150% at 50% 0%)' }}
         animate={{ clipPath: 'circle(0% at 50% 0%)' }}
         transition={{ duration: 1.4, ease: [0.76, 0, 0.24, 1] }}
       >
-        <div 
-          className="absolute w-[200vw] h-[200vw] rounded-full blur-[40px] border-[8px] border-orange-500/40" 
+        <div
+          className="absolute h-[200vw] w-[200vw] rounded-full border-[8px] border-orange-500/40 blur-[40px]"
           style={{ backgroundImage: orangeGradients[0] }}
         />
       </motion.div>
 
       <Navbar />
-      <div 
-        className="fixed inset-0 z-0 pointer-events-none"
+      <div
+        className="pointer-events-none fixed inset-0 z-0"
         style={{
-          background: 'radial-gradient(circle at 0% 50%, rgba(255, 158, 0, 0.05) 0%, rgba(255, 255, 255, 0) 70%)',
+          background:
+            'radial-gradient(circle at 0% 50%, rgba(255, 158, 0, 0.05) 0%, rgba(255, 255, 255, 0) 70%)',
         }}
       />
 
-      <div className="fixed inset-0 z-10 select-none pointer-events-none">
+      <div className="pointer-events-none fixed inset-0 z-10 select-none">
         {bubbles.map((id, index) => (
-          <Bubble 
-            key={id} 
-            index={index} 
-          />
+          <Bubble key={id} index={index} />
         ))}
       </div>
       <CursorBorder />
-      <main className="relative noise-bg min-h-screen">
+      <main className="noise-bg relative min-h-screen">
         <div className="relative z-10">
           <Experience />
         </div>

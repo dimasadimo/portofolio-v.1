@@ -1,24 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&family=Press+Start+2P&display=swap');
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Space Grotesk", sans-serif;
-  --font-press-start: "Press Start 2P", system-ui;
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-press-start: 'Press Start 2P', system-ui;
 
-  --color-orange: #FE5402;
-  --color-purple: #7A1FA2;
-  --color-dark: #0C1B3F;
-  --color-white: #FFFFFF;
+  --color-orange: #fe5402;
+  --color-purple: #7a1fa2;
+  --color-dark: #0c1b3f;
+  --color-white: #ffffff;
 
   --expo-out: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @layer base {
   :root {
-    --bg-primary: #FFFFFF;
-    --text-primary: #0C1B3F;
-    --text-secondary: #1F2937;
+    --bg-primary: #ffffff;
+    --text-primary: #0c1b3f;
+    --text-secondary: #1f2937;
     --text-muted: rgba(12, 27, 63, 0.6);
     --text-muted-secondary: rgba(12, 27, 63, 0.5);
     --border-color: rgba(12, 27, 63, 0.1);
@@ -27,9 +27,9 @@
   }
 
   [data-theme='dark'] {
-    --bg-primary: #0C1B3F;
-    --text-primary: #F3F4F6;
-    --text-secondary: #E5E7EB;
+    --bg-primary: #0c1b3f;
+    --text-primary: #f3f4f6;
+    --text-secondary: #e5e7eb;
     --text-muted: rgba(255, 255, 255, 0.65);
     --text-muted-secondary: rgba(255, 255, 255, 0.55);
     --border-color: rgba(255, 255, 255, 0.1);
@@ -38,31 +38,38 @@
   }
 
   body {
-    @apply bg-[var(--bg-primary)] text-[var(--text-primary)] font-sans transition-colors duration-300;
+    @apply bg-[var(--bg-primary)] font-sans text-[var(--text-primary)] transition-colors duration-300;
     overflow-x: hidden;
     color-scheme: light dark;
   }
 
-  h1, h2, h3, h4, .font-display {
+  h1,
+  h2,
+  h3,
+  h4,
+  .font-display {
     @apply font-display tracking-tight text-[var(--text-primary)];
   }
-  
-  p, span, a, li {
+
+  p,
+  span,
+  a,
+  li {
     @apply text-[var(--text-primary)];
   }
 }
 
 @layer utilities {
   .glass {
-    @apply backdrop-blur-md bg-[var(--glass-bg)] border border-[var(--glass-border)];
+    @apply border border-[var(--glass-border)] bg-[var(--glass-bg)] backdrop-blur-md;
   }
 
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-orange to-purple;
+    @apply from-orange to-purple bg-gradient-to-r bg-clip-text text-transparent;
   }
 
   .noise-bg {
-    background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+    background-image: url('https://grainy-gradients.vercel.app/noise.svg');
     filter: contrast(150%) brightness(100%);
   }
 }
@@ -93,8 +100,10 @@ html.lenis {
 }
 
 ::view-transition-new(root) {
-  -webkit-mask: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MCA0MCI+PGRlZnM+PGZpbHRlciBpZD0iYmx1ciI+PGZlR2F1c3NpYW5CbHVyIHN0ZERldmlhdGlvbj0iMiIvPjwvZmlsdGVyPjwvZGVmcz48Y2lyY2xlIGN4PSI0MCIgY3k9IjAiIHI9IjE4IiBmaWxsPSJ3aGl0ZSIgZmlsdGVyPSJ1cmwoI2JsdXIpIi8+PC9zdmc+') top right / 0 no-repeat;
-  mask: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MCA0MCI+PGRlZnM+PGZpbHRlciBpZD0iYmx1ciI+PGZlR2F1c3NpYW5CbHVyIHN0ZERldmlhdGlvbj0iMiIvPjwvZmlsdGVyPjwvZGVmcz48Y2lyY2xlIGN4PSI0MCIgY3k9IjAiIHI9IjE4IiBmaWxsPSJ3aGl0ZSIgZmlsdGVyPSJ1cmwoI2JsdXIpIi8+PC9zdmc+') top right / 0 no-repeat;
+  -webkit-mask: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MCA0MCI+PGRlZnM+PGZpbHRlciBpZD0iYmx1ciI+PGZlR2F1c3NpYW5CbHVyIHN0ZERldmlhdGlvbj0iMiIvPjwvZmlsdGVyPjwvZGVmcz48Y2lyY2xlIGN4PSI0MCIgY3k9IjAiIHI9IjE4IiBmaWxsPSJ3aGl0ZSIgZmlsdGVyPSJ1cmwoI2JsdXIpIi8+PC9zdmc+')
+    top right / 0 no-repeat;
+  mask: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MCA0MCI+PGRlZnM+PGZpbHRlciBpZD0iYmx1ciI+PGZlR2F1c3NpYW5CbHVyIHN0ZERldmlhdGlvbj0iMiIvPjwvZmlsdGVyPjwvZGVmcz48Y2lyY2xlIGN4PSI0MCIgY3k9IjAiIHI9IjE4IiBmaWxsPSJ3aGl0ZSIgZmlsdGVyPSJ1cmwoI2JsdXIpIi8+PC9zdmc+')
+    top right / 0 no-repeat;
   -webkit-mask-origin: content-box;
   mask-origin: content-box;
   animation: scale 1s;
@@ -117,4 +126,3 @@ html.lenis {
     mask-size: 350vmax;
   }
 }
-
