@@ -97,20 +97,13 @@ const UnderlineToBackground = ({
     },
   };
 
-  // Animation variants for the text color
-  const textVariants = {
-    initial: {
-      color: 'currentColor',
-    },
-    target: {
-      color: targetTextColor,
-      transition: transition,
-    },
-  };
-
   return (
     <MotionComponent
-      className={cn('relative inline-block cursor-pointer', className)}
+      className={cn('group relative inline-block cursor-pointer', className)}
+      // The hover colour is a CSS custom property, not a motion value. Animating
+      // `color` makes motion resolve `currentColor` to a fixed rgb() and leave it
+      // inline, which then survives a theme change and shows the wrong colour.
+      style={{ '--underline-target-color': targetTextColor } as React.CSSProperties}
       whileHover="target"
       ref={textRef}
       {...props}
@@ -126,9 +119,9 @@ const UnderlineToBackground = ({
         variants={underlineVariants}
         aria-hidden="true"
       />
-      <motion.span variants={textVariants} className="relative text-current">
+      <span className="relative text-current transition-colors duration-300 group-hover:text-[var(--underline-target-color)]">
         {children}
-      </motion.span>
+      </span>
     </MotionComponent>
   );
 };
